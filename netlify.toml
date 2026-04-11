@@ -1,7 +1,7 @@
 [build]
   base = "vhhm-frontend"
   command = "npm run build"
-  publish = ".netlify/output"
+  publish = ".next"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
