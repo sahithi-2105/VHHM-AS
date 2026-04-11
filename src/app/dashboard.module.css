@@ -1,0 +1,409 @@
+.container {
+  min-height: 100vh;
+  background-color: var(--background);
+  background-image:
+    radial-gradient(at 0% 0%,   rgba(0, 98, 255, 0.08) 0px, transparent 40%),
+    radial-gradient(at 100% 100%, rgba(0, 230, 118, 0.08) 0px, transparent 40%),
+    radial-gradient(at 50% 50%,  rgba(255, 61, 0, 0.03)  0px, transparent 60%);
+  color: var(--foreground);
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-main);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* ─── Header ────────────────────────────────────────────────────── */
+.header {
+  padding: 1.25rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--header-bg);
+  transition: background 0.3s ease;
+}
+
+.titleSection h1 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  background: linear-gradient(to right, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.titleSection p {
+  color: var(--foreground-muted);
+  font-size: 0.85rem;
+}
+
+.userProfile {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+/* ─── Layout ─────────────────────────────────────────────────────── */
+.mainLayout {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 2.5rem;
+  padding: 3rem;
+  max-width: 1600px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.dashboardGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+/* ─── Metric Cards ───────────────────────────────────────────────── */
+.metricCard {
+  background: var(--surface);
+  padding: 2.5rem;
+  border-radius: 24px;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+}
+
+[data-theme='dark'] .metricCard {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+}
+
+.metricCard:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 25px 50px -12px rgba(0, 98, 255, 0.15);
+  border-color: var(--primary);
+}
+
+[data-theme='dark'] .metricCard:hover {
+  box-shadow: 0 25px 50px -12px rgba(0, 98, 255, 0.3);
+}
+
+.metricCard::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 4px;
+  background: linear-gradient(to right, var(--primary), var(--secondary));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.metricCard:hover::before {
+  opacity: 1;
+}
+
+.metricHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.metricStatus {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.4rem 1rem;
+  border-radius: 100px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.statusNormal {
+  background: rgba(0, 230, 118, 0.1);
+  color: #059669;
+}
+
+[data-theme='dark'] .statusNormal {
+  background: rgba(0, 230, 118, 0.15);
+  color: #34D399;
+}
+
+.statusAlert {
+  background: rgba(255, 61, 0, 0.08);
+  color: #dc2626;
+}
+
+[data-theme='dark'] .statusAlert {
+  background: rgba(255, 61, 0, 0.15);
+  color: #F87171;
+}
+
+.metricValue {
+  font-size: 3.5rem;
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  color: var(--foreground);
+}
+
+.metricUnit {
+  font-size: 1.25rem;
+  color: var(--foreground-muted);
+  margin-left: 0.75rem;
+  font-weight: 600;
+}
+
+/* ─── Twin Section ───────────────────────────────────────────────── */
+.twinSection {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.twinPreview {
+  height: 480px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface);
+  border-radius: 32px;
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+  transition: all 0.5s ease;
+}
+
+[data-theme='dark'] .twinPreview {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+}
+
+.twinPreview:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+/* ─── Chatbot Trigger ────────────────────────────────────────────── */
+.chatbotTrigger {
+  position: fixed;
+  bottom: 3rem;
+  right: 3rem;
+  width: 72px;
+  height: 72px;
+  background: var(--primary);
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 15px 30px rgba(0, 98, 255, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.chatbotTrigger:hover {
+  transform: scale(1.1) rotate(5deg);
+  background: var(--primary-dark);
+}
+
+.pulse {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  background: var(--primary);
+  opacity: 0.3;
+  animation: pulse 2.5s infinite linear;
+}
+
+@keyframes pulse {
+  0%   { transform: scale(1);   opacity: 0.3; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+/* ─── Admin Patient Table ─────────────────────────────────────────── */
+.patientTable {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 0.75rem;
+}
+
+.patientTable th {
+  padding: 1.25rem 1.5rem;
+  text-align: left;
+  color: var(--foreground-muted);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+
+.patientRow {
+  background: var(--surface);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+[data-theme='dark'] .patientRow {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.patientRow:hover {
+  transform: translateX(10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.07);
+  background: var(--surface-muted);
+}
+
+[data-theme='dark'] .patientRow:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.patientRow td {
+  padding: 1.75rem 1.5rem;
+  color: var(--foreground);
+}
+
+.patientRow td:first-child { border-radius: 16px 0 0 16px; }
+.patientRow td:last-child  { border-radius: 0 16px 16px 0; }
+
+/* ─── Consultation Section ───────────────────────────────────────── */
+.consultationCard {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 3rem;
+  border-radius: 32px;
+  grid-column: span 2;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    0 4px 15px rgba(0,0,0,0.05),
+    inset 0 0 0 1px rgba(255,255,255,0.05);
+}
+
+.consultationHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.doctorProfile {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.doctorAvatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 3px solid var(--primary);
+  object-fit: cover;
+  box-shadow: 0 0 20px rgba(0, 98, 255, 0.2);
+}
+
+.doctorInfo h4 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin: 0;
+  color: var(--foreground);
+}
+
+.doctorInfo p {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--primary);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.consultationBadge {
+  padding: 0.6rem 1.75rem;
+  border-radius: 100px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.medicalSection {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  margin-top: 2rem;
+}
+
+.medicalCategory h5 {
+  color: var(--foreground-muted);
+  font-size: 0.8rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+}
+
+.medicalItem {
+  padding: 1.25rem;
+  background: var(--surface-muted);
+  border-radius: 16px;
+  border-left: 4px solid var(--primary);
+  margin-bottom: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.lifestyleItem {
+  padding: 1.25rem;
+  background: var(--surface-muted);
+  border-radius: 16px;
+  border-left: 4px solid var(--secondary);
+  margin-bottom: 1rem;
+}
+
+.signatureSection {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.signatureText {
+  font-family: 'Dancing Script', cursive, serif;
+  font-size: 2.5rem;
+  color: var(--primary);
+  opacity: 0.8;
+  line-height: 1;
+}
+
+.stamp {
+  opacity: 0.4;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-align: right;
+  line-height: 1.4;
+}
+
+/* ─── History Scrollbar ─────────────────────────────────────────── */
+.tableWrapper::-webkit-scrollbar {
+  width: 8px;
+}
+
+.tableWrapper::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.tableWrapper::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 10px;
+}
+
+.tableWrapper::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
