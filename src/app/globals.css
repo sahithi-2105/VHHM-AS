@@ -110,7 +110,12 @@ body {
   box-shadow: 0 16px 48px 0 rgba(31, 38, 135, 0.14);
 }
 
+
+
+
 [data-theme='dark'] .glass-card:hover {
+
+  
   box-shadow: 0 16px 48px 0 rgba(0, 0, 0, 0.5);
 }
 
