@@ -1,0 +1,18 @@
+
+> vhhm-frontend@0.1.0 dev
+> next dev
+
+⚠ Port 3000 is in use by process 7924, using available port 3001 instead.
+▲ Next.js 16.2.1 (Turbopack)
+- Local:         http://localhost:3001
+- Network:       http://172.18.58.3:3001
+✓ Ready in 1225ms
+⨯ Another next dev server is already running.
+
+- Local:        http://localhost:3000
+- PID:          7924
+- Dir:          C:\Users\sahit_8xxavm7\Contacts\Downloads\VHHM-AS (1)\VHHM-AS\vhhm-frontend
+- Log:          .next\dev\logs\next-development.log
+
+Run taskkill /PID 7924 /F to stop it.
+[?25h
