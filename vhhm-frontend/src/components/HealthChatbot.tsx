@@ -75,7 +75,7 @@ export default function HealthChatbot({ onComplete, onClose, userId }: ChatbotPr
       ]);
 
       try {
-        const res = await fetch('http://localhost:8000/analyze-full', {
+        const res = await fetch('/api/analyze-full', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({

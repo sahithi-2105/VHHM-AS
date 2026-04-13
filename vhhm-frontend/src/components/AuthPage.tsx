@@ -12,7 +12,7 @@ interface AuthPageProps {
 
 type AuthMode = 'login' | 'signup' | 'forgot' | 'reset' | 'verify-pending';
 
-const API = 'http://localhost:8000';
+const API = '/api';
 
 // ── Field wrapper — MUST be outside AuthPage to keep stable identity ──────────
 // If defined inside, React remounts it on every state change, killing input focus

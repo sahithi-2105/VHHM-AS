@@ -40,7 +40,7 @@ function HomeContent() {
 
   const checkBackend = async () => {
     try {
-      const resp = await fetch('http://localhost:8000/admin/patients');
+      const resp = await fetch('/api/admin/patients');
       if (resp.ok) setBackendStatus('online');
       else setBackendStatus('offline');
     } catch {
@@ -70,7 +70,7 @@ function HomeContent() {
     if (!id) return;
     setLoadingHistory(true);
     try {
-      const resp = await fetch(`http://localhost:8000/patient/history/${id}`);
+      const resp = await fetch(`/api/patient/history/${id}`);
       if (resp.ok) {
         const data = await resp.json();
         setHistory(data);
@@ -106,7 +106,7 @@ function HomeContent() {
 
   const fetchPatients = async () => {
     try {
-      const resp = await fetch('http://localhost:8000/admin/patients');
+      const resp = await fetch('/api/admin/patients');
       if (resp.ok) {
         const data = await resp.json();
         setPatients(data);
